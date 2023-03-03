@@ -1,17 +1,19 @@
 const loadData =()=>{
     fetch("https://openapi.programming-hero.com/api/ai/tools")
      .then(response => response.json())
-    .then(data => displayDAta(data.data.tools))
+    .then(data => displayData(data.data.tools.slice(0,6)));
 }
-const displayDAta=(datas)=>{
+const displayData=(datas)=>{
     const cardContainer=document.getElementById("all-card-container")
+    cardContainer.innerHTML="";
     datas.forEach(data => {
         console.log(data)
         const div=document.createElement("div");
         div.classList.add("col-md-4");
         div.innerHTML=`
-        <div class="border g-2 "> 
-        <div class="m-3 ">  <img  class="img-fluid h-100"src="${data.image}" alt="" srcset=""></div>
+        <div class="border g-2 my-3 shadow-lg p-3 mb-5"style="height:550px ">
+        
+        <div class=" container mt-3 ">  <img   class="img-fluid rounded-4"src="${data.image}" alt="" srcset=""></div>
         <div class=" m-3"><span class="fw-semibold">Features</span> 
         <br>
        
@@ -23,15 +25,24 @@ const displayDAta=(datas)=>{
         
         </div>
         <hr>
-        <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex justify-content-between align-items-center container">
           <section>
-
+          <p>${data.name}</p>
+          <p> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar2-week" viewBox="0 0 16 16">
+          <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM2 2a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H2z"/>
+          <path d="M2.5 4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V4zM11 7.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm-3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm-5 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z"/>
+         </svg> <span> ${data.published_in}</span></p>
           </section>
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-short" viewBox="0 0 16 16">
+          <section class="rounded-5 btn btn-danger">
+          <svg class=" text-white" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-right-short" viewBox="0 0 16 16">
               <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"/>
             </svg>
       
-      </div></div>
+          </section>
+          
+      </div>
+        
+        </div>
         `
        
         cardContainer.appendChild(div);
@@ -45,7 +56,15 @@ const displayDAta=(datas)=>{
 
 }
 
+const loadAllData=()=>{
 
+  fetch("https://openapi.programming-hero.com/api/ai/tools")
+  .then(response => response.json())
+ .then(data => displayData(data.data.tools))
 
+ const seeMore=document.getElementById("see-more");
+ seeMore.classList.add("d-none")
+
+}
 
 loadData()

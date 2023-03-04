@@ -71,9 +71,14 @@ cardSpeechDescription.innerHTML=`
 `
 
 
+const  accuracy=document.getElementById("accuracy")
+const intNumber=parseFloat(singleData.accuracy.score)  *100
+accuracy.innerHTML=`
+<button class="btn btn-danger">${intNumber} % accuracy</button>
 
+`
 
-
+console.log(parseFloat(singleData.accuracy.score))
 
 }  
 
@@ -152,7 +157,11 @@ const displayData=(datas) =>{
       </div>
       <div class="col-sm-6">
         <div class="card " >
+
+        <div style="position:absolute;">
         <div id="imgCard"></div>
+        <div id="accuracy" style="position:absolute; top:30px; right:20px;"></div>
+        </div>
         
 
         <div id="cardSpeechTitle" class="my-5">

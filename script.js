@@ -27,7 +27,7 @@ const cardText=document.getElementById("card-text");
 cardText.innerHTML=`
 <div class="text-primary " style="width:45px">${singleData.pricing[0].price}<br>${singleData.pricing[0].plan}</div>
 <div class="text-danger "style="width:45px">${singleData.pricing[1].price}<br>${singleData.pricing[1].plan}</div>
-<div class="text-dark "style="width:45px">${singleData.pricing[2].price}<br>${singleData.pricing[2].plan}</div>`
+<div class="text-success "style="width:45px">${singleData.pricing[2].price}<br>${singleData.pricing[2].plan}</div>`
  
 const featureUl=document.getElementById("featureUl")
 featureUl.innerHTML=`
@@ -43,6 +43,38 @@ integrations.innerHTML=`
 <li>${singleData.integrations[2]}</li>
 
 `
+
+const imgCard=document.getElementById("imgCard")
+imgCard.innerHTML=`
+<img src="${singleData.image_link[0]?singleData.image_link[0]:singleData.logo}" class="card-img-top" alt="...">
+
+`
+
+const cardSpeechTitle=document.getElementById("cardSpeechTitle")
+cardSpeechTitle.innerHTML=`
+
+<h5 class="card-title text-center">${singleData.input_output_examples[0].input}</h5>
+
+`
+
+
+console.log(`${singleData.input_output_examples[0].input}`)
+
+
+const cardSpeechDescription=document.getElementById("cardSpeechDescription")
+cardSpeechDescription.innerHTML=`
+
+<p>${singleData.input_output_examples[0].output}</p>
+
+
+
+`
+
+
+
+
+
+
 }  
 
 
@@ -51,24 +83,7 @@ const displayData=(datas) =>{
     const cardContainer=document.getElementById("all-card-container")
     cardContainer.innerHTML="";
     datas.forEach(data => {
-    //   console.log(data.features)
-
-    //   const feature=document.getElementById("feature");
-    //   data.features.forEach(featurelist => {
-       
-    //       console.log(featurelist)
-          
-  
-    // let li =document.createElement("li")
-    // li.innerText=`${featurelist}`
-    // feature.appendChild(li);
     
-    
-          
-    //   })
-      
-     
-
       
         const div=document.createElement("div");
         
@@ -121,7 +136,7 @@ const displayData=(datas) =>{
             <div class="card-text d-flex justify-content-between container  my-5"  id="card-text">
                 
             </div>
-            <div class="d-flex justify-content-between">
+            <div class="d-flex justify-content-between container">
     <div>
       <h5 >Feature</h5>
       <ul id="featureUl"></ul>
@@ -136,15 +151,21 @@ const displayData=(datas) =>{
         </div>
       </div>
       <div class="col-sm-6">
-        <div class="card">
-          <img src="..." class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Special title treatment</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          </div>
+        <div class="card " >
+        <div id="imgCard"></div>
+        
+
+        <div id="cardSpeechTitle" class="my-5">
         </div>
+
+       <div id="cardSpeechDescription" class="my-5 container"></div>
+
+
+
       </div>
-    </div>
+    
+      </div>
+      </div>
 
       </div>
       

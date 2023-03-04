@@ -86,6 +86,13 @@ console.log(parseFloat(singleData.accuracy.score))
 
 const displayData=(datas) =>{
     const cardContainer=document.getElementById("all-card-container")
+    const spinnerContainer=document.getElementById("spinnerContainer")
+    spinnerContainer.classList.add("d-none")
+
+
+
+
+
     cardContainer.innerHTML="";
     datas.forEach(data => {
     
